@@ -5,31 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <style>
-        body{
-            background-color: black;
-            color: white;
+        body {
             font-family: Arial, Helvetica, sans-serif;
-            justify-content: center;
-            text-align: center;
         }
-        h1{
-            
-            padding: 20px;
-            text-align: center;
-        }
-        form{
-            text-align: center;
-            padding: 50px;
-        }
-        #loginContainer{
-            max-width: 50%;
+
+        #messageBox {
+            background-color: rgb(122, 3, 3);
+            border: 3px solid red;
+            color: white;
+            padding: 10px;
         }
     </style>
+    <script>
+        function isValid(email, password) {
+            if(email && password) {
+                return true;
+            }else {
+                return false;
+            }
+        }
+
+        async function performLogin() {
+            const loginRoute = "http://localhost:3000/login";
+            var email = document.getElementById("fieldEmail").value;
+            var password = document.getElementById("fieldPassword").value;
+
+            if(isValid(email, password)){
+                // mando autenticar no backend
+                try {
+                    const response = await fetch(loginRoute, {method: 'POST'});
+                    if(!response.ok){
+                        showErrorMessage(response.statusText);
+                    }
+                } catch (err) {
+                    console.error(err);
+                }
+            }else{
+                showErrorMessage()
+            }
+        }
+
+        function showErrorMessage(message) {
+            
+        }
+    </script>
 </head>
 <body>
-    <div id="loginContainer">
-        <h1>LOGIN</h1>
-        <form action="loginForm">
+    <div >
+        <h1>Login</h1>
+        <form>
             <p>
                 <label for="fieldEmail">Email:</label><br>
                 <input type="email" id="fieldEmail">
@@ -38,9 +62,11 @@
                 <label for="fieldPassword">Senha:</label><br>
                 <input type="password" id="fieldPassword">
             </p>
-            <button type="submit" id="btnSignIn">Sign in</button>
+            <button id="btnLogin">Sign in</button>
+            <div id="messageBox">
+                <p id="message">Este é um exemplo de mensagem de Erro</p>
+            </div>
         </form>
     </div>
-    <img src="assets/img/" alt="">
 </body>
 </html>
