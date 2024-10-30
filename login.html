@@ -1,75 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>PI - Login</title>
-        <style>
-            body {
-                padding: 0;
-                font-family: Arial, Helvetica, sans-serif;
-                background-color: #555454;
-                color: white;
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body{
+            background-color: black;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            justify-content: center;
+            text-align: center;
+        }
+        h1{
             
-            }
-
-            /*
-                1.Centralizar o login no meio da pagina 
-                2.Arredondar as bordas
-            */
-            h1 {
-                font-size: 3em;
-                /*border: 2px solid red;*/
-                border: 0;
-                padding: 0; /* espaçamento interno*/
-                /*margin: 0;*/
-            }
-
-            #divLogin {
-                padding: 0;
-                margin: 0 auto;
-                background-color: black;
-                border: 2px solid #ccc;
-                max-width: 40%; /* largura-maxima */
-                text-align: center;
-            }
-            
-            form {
-                /*border: 2px solid yellow;*/
-            }
-            
-            p {
-                /*border: 2px solid green;*/
-            }
-            
-        </style>
-    </head>
-    <body>
-        <div id="divLogin">
-            <h1>Login</h1>
-            <p>Informe seus dados para prosseguir:</p>
-            <!-- Vamos colocar o formulario de Login-->
-            <form id="meuform">
-                <p>
-                    <label for="email">Email:</label><br>
-                    <input id="email" type="email">
-                </p>
-                <p>
-                    <label for="pwd">Password:</label><br>
-                    <input id="pwd" type="password">
-                </p>
-                <button type="button" onclick="exibirDados()">Sing in</button>
-                <!--<button type="reset">Reset</button>-->
-            </form>
-        </div>
-         <script>
-            
-            function exibirDados(){
-                var email = document.getElementById("email").value;
-                var senha = document.getElementById("pwd").value;
-                console.log(email);
-                console.log(senha);
-            }
-
-         </script>
-         <!--https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch-->
-    </body>
+            padding: 20px;
+            text-align: center;
+        }
+        form{
+            text-align: center;
+            padding: 50px;
+        }
+        #loginContainer{
+            max-width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="loginContainer">
+        <h1>LOGIN</h1>
+        <form action="loginForm">
+            <p>
+                <label for="fieldEmail">Email:</label><br>
+                <input type="email" id="fieldEmail">
+            </p>
+            <p>
+                <label for="fieldPassword">Senha:</label><br>
+                <input type="password" id="fieldPassword">
+            </p>
+            <button type="submit" id="btnSignIn">Sign in</button>
+        </form>
+    </div>
+    <img src="assets/img/" alt="">
+</body>
 </html>
